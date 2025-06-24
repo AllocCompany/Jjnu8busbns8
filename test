@@ -1,0 +1,91 @@
+{
+  "policy" : {
+    "system" : {
+      "statsInboundDownlink" : true,
+      "statsOutboundDownlink" : true,
+      "statsInboundUplink" : true,
+      "statsOutboundUplink" : true
+    }
+  },
+  "inbounds" : [
+    {
+      "protocol" : "socks",
+      "settings" : {
+        "udp" : true
+      },
+      "port" : 1080,
+      "sniffing" : {
+        "enabled" : true,
+        "destOverride" : [
+          "quic",
+          "http",
+          "tls"
+        ],
+        "routeOnly" : false
+      },
+      "listen" : "[::1]",
+      "tag" : "socks"
+    }
+  ],
+  "id" : "BF0FE6AD-15C3-4B45-BC4C-5BE412C13895",
+  "remarks" : "🇸🇪Швеция❯encvpn(1)",
+  "log" : {
+    "loglevel" : "info"
+  },
+  "stats" : {
+
+  },
+  "outbounds" : [
+    {
+      "settings" : {
+        "vnext" : [
+          {
+            "address" : "185.177.239.33",
+            "users" : [
+              {
+                "id" : "76be52cf-7de8-4f9f-a8f4-85a645216c38",
+                "encryption" : "none",
+                "flow" : "xtls-rprx-vision"
+              }
+            ],
+            "port" : 443
+          }
+        ]
+      },
+      "tag" : "proxy",
+      "streamSettings" : {
+        "realitySettings" : {
+          "fingerprint" : "chrome",
+          "shortId" : "503bc37700b6",
+          "spiderX" : "\/",
+          "serverName" : "yahoo.com",
+          "publicKey" : "4DH0iVqBu5vnxcpwUxRmDkvWD2H87BQdbSB-VOPMpWQ"
+        },
+        "security" : "reality",
+        "network" : "tcp",
+        "tcpSettings" : {
+          "header" : {
+            "type" : "none"
+          }
+        }
+      },
+      "protocol" : "vless"
+    },
+    {
+      "settings" : {
+        "response" : {
+          "type" : "none"
+        }
+      },
+      "tag" : "block",
+      "protocol" : "blackhole"
+    },
+    {
+      "settings" : {
+
+      },
+      "tag" : "direct",
+      "protocol" : "freedom"
+    }
+  ]
+}
